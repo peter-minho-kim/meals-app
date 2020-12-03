@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import { CATEGORIES } from '../data/dummy-data';
-import Colors from '../constants/Colors';
 
 const CategoriesScreen = (props) => {
   const renderGridItem = (itemData) => {
@@ -18,7 +17,10 @@ const CategoriesScreen = (props) => {
         style={styles.gridItem}
         onPress={() => {
           props.navigation.navigate({
-            routeName: 'CategoryMeals'
+            routeName: 'CategoryMeals',
+            params: {
+              categoryId: itemData.item.id
+            }
           });
         }}
       >
@@ -40,11 +42,7 @@ const CategoriesScreen = (props) => {
 };
 
 CategoriesScreen.navigationOptions = {
-  headerTitle: 'Meal Categories',
-  headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
-  },
-  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor
+  headerTitle: 'Meal Categories'
 };
 
 const styles = StyleSheet.create({
